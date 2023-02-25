@@ -1,12 +1,13 @@
-const Logo = () => {
+const MainLogo = () => {
   return (
     <div className="logo-container">
       <img
-        src="C:\Users\julie\Desktop\react-coder-project\src\Components\Logo\dark-theme-logo.png"
+        style={{ width: "200px", margin: "20px" }}
+        src="https://cdn.logojoy.com/wp-content/uploads/2018/05/30143419/95.png"
         alt=""
       />
     </div>
   );
 };
 
-export default Logo;
+export default MainLogo;

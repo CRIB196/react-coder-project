@@ -1,13 +1,12 @@
 .container-navbar {
   width: 100%;
-  height: 10vh;
-  background-color: #101720;
+  height: 120px;
+  background-color: #0b2444e5;
   color: white;
   display: flex;
   flex-direction: row; /*default*/
   flex-flow: row;
   justify-content: center;
   align-items: center;
-  height: 80px;
   text-transform: uppercase;
 }
