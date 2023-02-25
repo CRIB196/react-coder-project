@@ -8,7 +8,7 @@ function App() {
   return (
     <div>
       <Navbar />
-      <ItemListContainer greeting={"Welcome to Swiss Clothing"} />
+      <ItemListContainer greeting={"Welcome to Swiss Cothing"} />
       <ProductCard title={"Mizzy Sweater"} price={20} />
       <ProductCard title={"Kendall Jean"} price={45} />
       <ProductCard title={"Hailey Pants"} price={70} />
