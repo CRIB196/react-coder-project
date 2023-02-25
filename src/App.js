@@ -1,15 +1,18 @@
-import Footer from "./Components.js/Footer/Footer";
-import Navbar from "./Components.js/Navbar/Navbar";
-import ProductCard from "./Components.js/ProductCard/ProductCard";
+import Footer from "./Components/Footer/Footer";
+import ProductCard from "./Components/ProductCard/ProductCard";
+import Navbar from "./Components/Navbar/Navbar";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
     <div>
-      {/* <Navbar />
-      <Footer /> */}
-      <ProductCard title={"bike"} price={20}/>
-      <ProductCard title={"sunglasses"} price={20}/>
-      <ProductCard title={"bottle"} price={20}/>
+      <Navbar />
+      <ProductCard title={"Mizzy Sweater"} price={20} />
+      <ProductCard title={"Kendall Jean"} price={45} />
+      <ProductCard title={"Hailey Pants"} price={70} />
+      <ProductCard title={"Malibu T-shirt"} price={35} />
+      <ProductCard title={"Selena One Sleeve"} price={20} />
+      <Footer />
     </div>
   );
 }

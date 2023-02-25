@@ -4,9 +4,10 @@ const NavbarList = () => {
   return (
     <div>
       <ul>
-        <li>Contacto</li>
-        <li>Quienes somos</li>
-        <li>Ayuda</li>
+        <li>About us</li>
+        <li>Contact </li>
+        <li>Our allies</li>
+        <li>Shop</li>
       </ul>
     </div>
   );
