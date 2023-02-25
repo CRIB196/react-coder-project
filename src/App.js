@@ -2,11 +2,13 @@ import Footer from "./Components/Footer/Footer";
 import ProductCard from "./Components/ProductCard/ProductCard";
 import Navbar from "./Components/Navbar/Navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
+import ItemListContainer from "./Components/ItemListContainer/ItemListContainer";
 
 function App() {
   return (
     <div>
       <Navbar />
+      <ItemListContainer greeting={"Welcome to Swiss Clothing"} />
       <ProductCard title={"Mizzy Sweater"} price={20} />
       <ProductCard title={"Kendall Jean"} price={45} />
       <ProductCard title={"Hailey Pants"} price={70} />
