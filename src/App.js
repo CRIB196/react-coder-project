@@ -3,11 +3,13 @@ import ProductCard from "./Components/ProductCard/ProductCard";
 import Navbar from "./Components/Navbar/Navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ItemListContainer from "./Components/ItemListContainer/ItemListContainer";
+import ItemCount from "./Components/ItemCount/ItemCount";
 
 function App() {
   return (
     <div>
       <Navbar />
+      <ItemCount/>
       <ItemListContainer greeting={"Welcome to Swiss Cothing"} />
       <ProductCard title={"Mizzy Sweater"} price={20} />
       <ProductCard title={"Kendall Jean"} price={45} />
