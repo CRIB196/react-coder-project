@@ -5,10 +5,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import ItemListContainer from "./Components/ItemListContainer/ItemListContainer";
 import Login from "./Components/Login/Login";
 import Cart from "./Components/Cart/Cart";
+import ItemDetailContainer from "./Components/ItemDetailContainer/ItemDetailContainer";
 
 function App() {
   return (
     <div>
+      <h1>HI!</h1>
+      <Navbar />
+      
       <BrowserRouter>
         <Navbar />
 

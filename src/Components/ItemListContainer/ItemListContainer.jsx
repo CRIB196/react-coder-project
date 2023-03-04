@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { products } from "../../productsMock";
+import { products } from "../../productMock";
 import ItemList from "../ItemList/ItemList";
 
 const ItemListContainer = () => {
@@ -9,7 +9,7 @@ const ItemListContainer = () => {
   const [items, setItems] = useState([]);
 
   const filteredProducts = products.filter(
-    (elemento) => elemento.category === categoryName
+    (product) => product.category === categoryName
   );
 
   useEffect(() => {
