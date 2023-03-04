@@ -1,20 +1,15 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Footer from "./Components/Footer/Footer";
-import ProductCard from "./Components/ProductCard/ProductCard";
 import Navbar from "./Components/Navbar/Navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ItemListContainer from "./Components/ItemListContainer/ItemListContainer";
-import ItemCount from "./Components/ItemCount/ItemCount";
-import { Hd } from "@mui/icons-material";
 import Login from "./Components/Login/Login";
+import Cart from "./Components/Cart/Cart";
 
 function App() {
   const onAdd = (cantidad) => {
     console.log("Se ejecuto onAdd " + cantidad);
   };
-
-  let stock = 5;
-  let initial = 1;
 
   return (
     <div>
@@ -23,12 +18,19 @@ function App() {
 
         <Routes>
           <Route path="/" element={<ItemListContainer />} />
-          <Route path="/card" element={<Cart />} />
+          <Route
+            path="/category/:categoryName"
+            element={<ItemListContainer />}
+          />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/itemDetail/:id" element={<ItemDetailContainer />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/itemDetail/id:" element={<Login />} />
-          <Route path="*" element={<h1>error 404: Not found</h1>} />
+          <Route path="*" element={<h1> error 404: Not found </h1>} />
         </Routes>
+
+        <Footer />
       </BrowserRouter>
+
       {/* <Navbar />
       <ItemCount stock={stock} initial={initial} onAdd={onAdd} />
       <ItemListContainer greeting={"Welcome to Swiss Cothing"} />

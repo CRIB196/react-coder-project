@@ -1,4 +1,4 @@
-import CartWidget from "../cartWidget/CartWidget";
+import CartWidget from "../CartWidget/CartWidget";
 import NavbarList from "../NavbarList/NavbarList";
 import MainLogo from "../Logo/Logo";
 import "./Navbar.css";
