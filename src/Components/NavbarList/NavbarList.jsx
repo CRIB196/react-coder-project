@@ -1,22 +1,29 @@
+import { Link } from "react-router-dom";
 import "./NavbarList.css";
 
 const NavbarList = () => {
+  let numero = 12;
   return (
     <div>
-      <ul className="container-list">
-        <li>
-          <a href="index.html">Home</a>
-        </li>
-        <li>
-          <a href="index.html">About Us</a>
-        </li>
-        <li>
-          <a href="index.html">Our allies</a>
-        </li>
-        <li>
-          <a href="index.html">Shop</a>
-        </li>
-      </ul>
+      <div className={styles.containerNavbar}>
+        <Link to="/" style={{ color: "#e1d4c7", textDecoration: "none" }}>
+          Comision: 51600
+        </Link>
+
+        <ul className={styles.containerList}>
+          <Link to="/" className={styles.navbarItem}>
+            Todas
+          </Link>
+          <Link to="/category/urbanas" className={styles.navbarItem}>
+            Urbanas
+          </Link>
+          <Link to="/category/deportivas" className={styles.navbarItem}>
+            Deportivas
+          </Link>
+        </ul>
+        <CartWidget numero={numero} />
+      </div>
+      {children}
     </div>
   );
 };

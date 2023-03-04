@@ -7,10 +7,6 @@ import Login from "./Components/Login/Login";
 import Cart from "./Components/Cart/Cart";
 
 function App() {
-  const onAdd = (cantidad) => {
-    console.log("Se ejecuto onAdd " + cantidad);
-  };
-
   return (
     <div>
       <BrowserRouter>
@@ -30,16 +26,6 @@ function App() {
 
         <Footer />
       </BrowserRouter>
-
-      {/* <Navbar />
-      <ItemCount stock={stock} initial={initial} onAdd={onAdd} />
-      <ItemListContainer greeting={"Welcome to Swiss Cothing"} />
-      <ProductCard title={"Mizzy Sweater"} price={20} />
-      <ProductCard title={"Kendall Jean"} price={45} />
-      <ProductCard title={"Hailey Pants"} price={70} />
-      <ProductCard title={"Malibu T-shirt"} price={35} />
-      <ProductCard title={"Selena One Sleeve"} price={20} />
-      <Footer /> */}
     </div>
   );
 }
