@@ -2,6 +2,7 @@ import CartWidget from "../cartWidget/CartWidget";
 import NavbarList from "../NavbarList/NavbarList";
 import MainLogo from "../Logo/Logo";
 import "./Navbar.css";
+import {Link} from "react-router-dom";
 
 const Navbar = () => {
   return (

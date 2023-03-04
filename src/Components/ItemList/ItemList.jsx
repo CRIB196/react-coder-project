@@ -1,5 +1,5 @@
 import React from 'react'
-import Item from '../Item/Item'
+import Item from '../Components/Item/Item'
 
 
 // nada de logica, todo el html se renderiza
