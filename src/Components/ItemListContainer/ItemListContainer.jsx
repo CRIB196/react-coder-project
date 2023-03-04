@@ -1,17 +1,34 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import ItemList from "../../ItemList/ItemList";
+import { products } from "../../productMock";
+
 
 const ItemListContainer = ({ greeting }) => {
   
   const [user, setUser]= useState("");
+  const [items, setItems]= useState([]);
 
+  useEffect(() => {
+    const productList= new Promise ((resolve, reject)=> {
+      resolve( products )
+    })
+
+    productList
+      .then ((res) => { setItems(res)})
+      .catch ((error) => {console.log(error)})
+  
+  },[]);
+  
+ 
   const updateName= () => {
-    setUser(user);
+    setUser("mariauser");
   }
 
+  
 
   return (
       <div>
-          <h2>{greeting}+ {user} </h2>
+         <ItemList items={items} />
       </div>
     );
   };
