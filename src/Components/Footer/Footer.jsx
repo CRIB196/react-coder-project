@@ -4,7 +4,8 @@ const Footer = ({ children }) => {
   return (
     <div className="footer-container">
       {children}
-      <h1>Next season - comming soon</h1>
+      <h1> Our collection: Winter 2023</h1>
+      <p>Copyright &copy; 2023</p>
     </div>
   );
 };

@@ -15,7 +15,7 @@ const Item = ({ element }) => {
       sx={{
         width: 345,
         height: 350,
-        backgroundColor: "black",
+        backgroundColor: "#101720",
         color: "white",
         border: "1px solid black",
         borderRadius: "10px",
@@ -37,7 +37,7 @@ const Item = ({ element }) => {
       <CardActions>
         <Link to={`/itemDetail/${element.id}`}>
           <Button size="small" variant="contained" color="primary">
-            Ver detalle
+            See Details
           </Button>
         </Link>
       </CardActions>

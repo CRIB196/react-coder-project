@@ -9,7 +9,7 @@ const ItemListContainer = () => {
   const [items, setItems] = useState([]);
 
   const productosFiltrados = products.filter(
-    (elemento) => elemento.category === categoryName
+    (element) => element.category === categoryName
   );
 
   useEffect(() => {
