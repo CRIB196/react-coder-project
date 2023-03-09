@@ -1,6 +1,5 @@
 import React from "react";
 
-
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -19,7 +18,7 @@ const Item = ({ element }) => {
         color: "white",
         border: "1px solid black",
         borderRadius: "10px",
-        boxShadow: "0px 0px 10px black",
+        boxShadow: "0px 0px 2px black",
       }}
     >
       <CardMedia

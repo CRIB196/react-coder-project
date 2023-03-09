@@ -13,8 +13,9 @@ const ItemList = ( {items} ) => {
         justifyContent: "space-evenly",
         alignItems: "center",
         flexWrap: "wrap",
-        gap: "20px",
-        padding: "20px 0"
+        gap: "40px",
+        padding: "20px 0",
+        margin: "20px"
     } } >
         
         {
