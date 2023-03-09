@@ -8,13 +8,13 @@ const ItemListContainer = () => {
 
   const [items, setItems] = useState([]);
 
-  const filteredProducts = products.filter(
-    (product) => product.category === categoryName
+  const productosFiltrados = products.filter(
+    (elemento) => elemento.category === categoryName
   );
 
   useEffect(() => {
     const productList = new Promise((resolve, reject) => {
-      resolve(categoryName ? filteredProducts : products);
+      resolve(categoryName ? productosFiltrados : products);
     });
 
     productList

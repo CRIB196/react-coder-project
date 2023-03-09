@@ -1,25 +1,21 @@
 import "./ProductCard.css";
 
-const ProductCard = (props) => {
-  let { title, price } = props;
+const ProductCard = ({ title, price = 0, isRed, login }) => {
+  const saludar = () => {
+    console.log("hola ");
+  };
 
-  const buy= () => {
-
-    console.log("Funcion directa cuando no recibe parametros");
-
-  }
- 
+  const saludar2 = (nombre) => {
+    console.log("hola " + nombre);
+  };
 
   return (
-    <div className="card custom-card" style={{ width: "300px" }}>
-      <img
-        src="https://reactjs.org/logo-og.png"
-        className="card-img-top"
-        alt="..."
-      />
-      <h5 className="card-title">{title}</h5>
-      <p className="card-text">UDS {price}</p>
-      <button onClick={buy}> Buy </button>
+    <div>
+      <h1 className={isRed ? "red" : "blue"}> {title} </h1>
+      <h2> {price} </h2>
+      <button onClick={saludar}>Saludar</button>
+      <button onClick={() => saludar2("juancito")}>Saludar dos</button>
+      <button onClick={login}>Ingresar</button>
     </div>
   );
 };

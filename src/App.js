@@ -10,12 +10,8 @@ import ItemDetailContainer from "./Components/ItemDetailContainer/ItemDetailCont
 function App() {
   return (
     <div>
-      <h1>HI!</h1>
-      <Navbar />
-      
       <BrowserRouter>
         <Navbar />
-
         <Routes>
           <Route path="/" element={<ItemListContainer />} />
           <Route
@@ -29,7 +25,7 @@ function App() {
         </Routes>
 
         <Footer />
-      </BrowserRouter>
+       </BrowserRouter>
     </div>
   );
 }

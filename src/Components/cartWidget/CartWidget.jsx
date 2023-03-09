@@ -4,7 +4,7 @@ import { BsFillCartCheckFill } from "react-icons/bs";
 const CartWidget = () => {
   return (
     <div style={{ margin: "50px" }}>
-      <BsFillCartCheckFill color="yellow" size={50} />
+      <BsFillCartCheckFill color="blue" size={50} />
     </div>
   );
 };

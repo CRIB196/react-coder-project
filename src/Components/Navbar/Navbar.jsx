@@ -1,16 +1,28 @@
+import styles from "../Navbar/Navbar.module.css";
 import CartWidget from "../CartWidget/CartWidget";
-import NavbarList from "../NavbarList/NavbarList";
-import MainLogo from "../Logo/Logo";
-import "./Navbar.css";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ children }) => {
   return (
-    <div className="container-navbar">
-      <h1>Swiss Clothing</h1>
-      <NavbarList />
-      <MainLogo />
-      <CartWidget />
+    <div className={styles.container}>
+      <div className={styles.containerNavbar}>
+        
+        <h1>Swiss Clothing</h1>
+
+        <ul className={styles.containerList}>
+          <Link to="/" className={styles.navbarItem}>
+            All
+          </Link>
+          <Link to="/category/sneakers" className={styles.navbarItem}>
+            Sneakers 
+          </Link>
+          <Link to="/category/hoddies" className={styles.navbarItem}>
+            Hoddies
+          </Link>
+        </ul>
+        <CartWidget />
+      </div>
+      {children}
     </div>
   );
 };
