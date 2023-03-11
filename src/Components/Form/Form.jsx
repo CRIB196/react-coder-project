@@ -1,39 +1,53 @@
 import { useState } from "react";
 
 const Form = () => {
+  const [userData, setUserData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
 
-  const [userData, setUserData]= useState({name: "", email: "", password:""});
-
-
-  const handleChange= (e) => {
-    setUserData({...userData, name: e.target.value});
-  }
-
-  const handleEmailChange = (e) => {
-    setUserData({...userData, email: e.target.value});
+  const handleChange = (e) => {
+    setUserData({ ...userData, [e.target.name]: e.target.value });
   };
 
+  console.log(userData);
+
+  const handleSubmit=(e) => {
+
+    e.preventDefault();
+
+    console.log(userData);
 
 
-console.log(userData);
+  }
+
+
 
   return (
     <div>
-      <form action="">
+      <form onSubmit={(e) => console.log(e)}>
         <input
           type="text"
-          placeholder="Write your name"
+          placeholder="Enter your name"
           onChange={handleChange}
           name="name"
         />
 
         <input
           type="text"
-          placeholder="Write your email"
-          onChange={handleEmailChange}
+          placeholder="Enter your email"
+          onChange={handleChange}
           name="email"
         />
-        <button>Login</button>
+
+        <input
+          type="text"
+          placeholder="Enter your password"
+          onChange={handleChange}
+          name="password"
+        />
+        <button type="submit">Submit</button>
       </form>
     </div>
   );
