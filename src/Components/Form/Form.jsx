@@ -17,6 +17,20 @@ const Form = () => {
 
     e.preventDefault();
 
+    if (userData.name.length <5){
+        console.log("nombre no valido")
+        return
+    }
+
+    const itIncludes= userData.name.includes("@");
+
+    if (!itIncludes){
+        console.log("Email is not valid")
+        return
+    }
+
+    //on submit to do
+
     console.log(userData);
 
 
@@ -47,7 +61,7 @@ const Form = () => {
           onChange={handleChange}
           name="password"
         />
-        <button type="submit">Submit</button>
+        <button type="submit" onSubmit={handleSubmit}>Submit</button>
       </form>
     </div>
   );
