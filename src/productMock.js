@@ -38,7 +38,7 @@ export const products = [
     img: "https://res.cloudinary.com/dav7tzdzv/image/upload/v1678565158/represent-represent-owners-club-hoodie-ash-grey-mens-hoodies_2_lhlll3.jpg",
   },
   {
-    id: 4,
+    id: 5,
     title: "Hailey Puff",
     price: 154,
     description:
@@ -47,7 +47,7 @@ export const products = [
     img: "https://res.cloudinary.com/dav7tzdzv/image/upload/v1678565166/il_570xN.4510798284_fowc_ney66s.avif",
   },
   {
-    id: 4,
+    id: 6,
     title: "Bella Col",
     price: 205,
     description:

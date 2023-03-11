@@ -21,7 +21,15 @@ const ItemDetailContainer = () => {
   };
 
   return (
-    <Card sx={{ maxWidth: 345 }} style={{ margin: "30px" }}>
+    <Card
+      sx={{ maxWidth: 345 }}
+      style={{
+        margin: "30px",
+        marginLeft: 500,
+        marginBottom: 100,
+        marginTop: 100,
+      }}
+    >
       <CardMedia
         sx={{ height: 140 }}
         image={selectedProducts.img}
