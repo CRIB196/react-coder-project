@@ -1,3 +1,7 @@
+import * as React from "react";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+
 import { useState } from "react";
 
 const ItemCount = ({ stock = 5, initial = 0, onAdd }) => {
@@ -17,11 +21,16 @@ const ItemCount = ({ stock = 5, initial = 0, onAdd }) => {
 
   return (
     <div>
-      <h2>Amount of this item on cart: {counter}</h2>
+      <Typography variant="body2" color="text.secondary">
+        Amount of this item on cart: {counter}
+      </Typography>
 
-      <button onClick={addOne}>Add one to cart</button>
-
-      <button onClick={decrease}>Eliminate from cart</button>
+      <Button size="small" onClick={addOne}>
+        Add one to cart
+      </Button>
+      <Button size="small" onClick={decrease}>
+        Eliminate from cart
+      </Button>
     </div>
   );
 };
