@@ -10,6 +10,9 @@ const CartWidget = () => {
     <Link to="/cart">
       <div style={{ margin: "50px" }}>
         <BsFillCartCheckFill color="white" size={50} />
+        <div className="bubble-counter" style={{ color: "white" }}>
+          <span>0</span>
+        </div>
       </div>
     </Link>
   );
