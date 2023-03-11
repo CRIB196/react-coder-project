@@ -12,6 +12,7 @@ const ItemDetailContainer = () => {
 
   const onAdd = (quantity) => {
     console.log(`${quantity} products were added to the cart.`);
+  
   };
 
   return (
