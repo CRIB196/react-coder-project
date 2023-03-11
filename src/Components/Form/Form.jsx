@@ -7,42 +7,41 @@ const Form = () => {
     password: "",
   });
 
+  const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
   const handleChange = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
   };
-
-  console.log(userData);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (userData.name.length < 5) {
-      console.log("nombre no valido");
+      setError(true);
+      setErrorMessage("Invalid name");
       return;
     }
 
     const itIncludes = userData.name.includes("@");
 
     if (!itIncludes) {
-      console.log("Email is not valid");
-      return;
-    }
-
-    if (!itIncludes) {
-      console.log("Email is not valid");
+      setError(true);
+      setErrorMessage("Email is not valid");
       return;
     }
 
     const str = userData.password.trim();
     const passwordIsValid = userData.password === str;
     if (!passwordIsValid || userData.password.length < 5) {
-      console.log(
+      setError(true);
+      setErrorMessage(
         "Invalid password. Please do not leave empty spaces and input more than 5 characters."
       );
+      return;
     }
 
     //on submit to do
-
     console.log(userData);
   };
 
@@ -73,6 +72,13 @@ const Form = () => {
           Submit
         </button>
       </form>
+
+      {error ? (
+        <h1>
+          Please check your input data, there are errors in validations.
+          {errorMessage}
+        </h1>
+      ) : null}
     </div>
   );
 };

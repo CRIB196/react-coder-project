@@ -7,11 +7,12 @@ import Login from "./Components/Login/Login";
 import Cart from "./Components/Cart/Cart";
 import ItemDetailContainer from "./Components/ItemDetailContainer/ItemDetailContainer";
 import Form from "./Components/Form/Form";
+import CartContextProvider from "./context/CartContext";
 
 function App() {
   return (
-    <div>
-      <BrowserRouter>
+    <BrowserRouter>
+      <CartContextProvider>
         <Navbar />
         <Routes>
           <Route path="/" element={<ItemListContainer />} />
@@ -26,10 +27,9 @@ function App() {
 
           <Route path="*" element={<h1> error 404: Not found </h1>} />
         </Routes>
-
         <Footer />
-      </BrowserRouter>
-    </div>
+      </CartContextProvider>
+    </BrowserRouter>
   );
 }
 
