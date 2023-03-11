@@ -8,6 +8,11 @@
   height: 100px;
 }
 
-.footer-container h1{
-  font-size: 20px;
+.footer-container h1 {
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+.footer-container p {
+  font-size: 12px;
 }

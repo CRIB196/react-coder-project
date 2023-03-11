@@ -20,7 +20,7 @@ const ItemList = ( {items} ) => {
         
         {
             items.map( (element)=>{
-                return <Item key={element.id} element={element} />
+                return <Item key={element.id} element={element}  />
             } )
         }
 
