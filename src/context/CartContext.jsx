@@ -12,8 +12,7 @@ const addToCart =(product) =>{
 
 let data={
     cart: cart,
-    setCard: setCart
-
+    addToCart: addToCart,
 }
 
   return <CartContext.Provider value={data}>
