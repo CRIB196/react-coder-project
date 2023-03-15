@@ -1,20 +1,18 @@
-import * as React from "react";
+import { useState } from "react";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
-import { useState } from "react";
-
-const ItemCount = ({ stock = 5, initial = 0, onAdd }) => {
+const ItemCount = ({ stock, initial = 1, onAdd }) => {
   const [counter, setCounter] = useState(initial);
 
-  const addOne = () => {
+  const add = () => {
     if (counter < stock) {
       setCounter(counter + 1);
     }
   };
 
   const decrease = () => {
-    if (counter > 0) {
+    if (counter > 1) {
       setCounter(counter - 1);
     }
   };
@@ -22,14 +20,17 @@ const ItemCount = ({ stock = 5, initial = 0, onAdd }) => {
   return (
     <div>
       <Typography variant="body2" color="text.secondary">
-        Amount of this item on cart: {counter}
+        Item quantity: {counter}
       </Typography>
 
-      <Button size="small" onClick={addOne}>
-        Add one to cart
+      <Button size="small" onClick={add}>
+        Add
       </Button>
       <Button size="small" onClick={decrease}>
-        Eliminate from cart
+        Eliminate
+      </Button>
+      <Button size="small" onClick={() => onAdd(counter)}>
+        Add to cart
       </Button>
     </div>
   );
