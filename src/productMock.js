@@ -9,7 +9,7 @@ export const products = [
       "Feel good, run fast, do better. It's a cycle. Add bounce to your run with the Ultraboost Light.",
     category: "sneakers",
     stock: 10,
-    img: "https://res.cloudinary.com/dnqfh2chg/image/upload/v1669326932/free-metcon-4-zapatillas-de-entrenamiento-TQMCZg_fvia3m.png",
+    img: "https://res.cloudinary.com/dav7tzdzv/image/upload/v1678915444/s-l500_yhnhhx.jpg",
   },
   {
     id: 2,
