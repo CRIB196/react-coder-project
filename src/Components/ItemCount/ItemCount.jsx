@@ -1,37 +1,36 @@
-import { useState } from "react";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
+import { Button } from "@mui/material";
+import { useEffect, useState } from "react";
 
 const ItemCount = ({ stock, initial = 1, onAdd }) => {
-  const [counter, setCounter] = useState(initial);
+  const [contador, setContador] = useState(initial);
 
-  const add = () => {
-    if (counter < stock) {
-      setCounter(counter + 1);
+
+  const sumar = () => {
+    if (contador < stock) {
+      setContador(contador + 1);
     }
   };
 
-  const decrease = () => {
-    if (counter > 1) {
-      setCounter(counter - 1);
+  const restar = () => {
+    if (contador > 1) {
+      setContador(contador - 1);
     }
   };
 
   return (
-    <div>
-      <Typography variant="body2" color="text.secondary">
-        Item quantity: {counter}
-      </Typography>
-
-      <Button size="small" onClick={add}>
-        Add
-      </Button>
-      <Button size="small" onClick={decrease}>
-        Eliminate
-      </Button>
-      <Button size="small" onClick={() => onAdd(counter)}>
-        Add to cart
-      </Button>
+    <div className="container-btn">
+      <h2>Cantidad: {contador}</h2>
+      <div className="btns">
+        <Button variant="outlined" onClick={sumar}>
+          +
+        </Button>
+        <Button variant="contained" onClick={() => onAdd(contador)}>
+          agregar al carrito
+        </Button>
+        <Button variant="outlined" onClick={restar}>
+          -
+        </Button>
+      </div>
     </div>
   );
 };

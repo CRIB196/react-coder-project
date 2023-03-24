@@ -1,55 +1,79 @@
-import * as React from "react";
+import React, { useContext, useEffect, useState } from "react";
+
 import { useParams } from "react-router-dom";
-import { useContext } from "react";
-import { products } from "../../productMock";
-import ItemCount from "../ItemCount/ItemCount";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
+import Swal from "sweetalert2";
 import { CartContext } from "../../context/CartContext";
+
+import ItemCount from "../ItemCount/ItemCount";
+
+
+import { getDoc, collection, doc } from "firebase/firestore"
+import { db } from "../../firebaseConfig";
 
 const ItemDetailContainer = () => {
   const { id } = useParams();
 
-  const { addToCart } = useContext(CartContext);
+  const { agregarAlCarrito: addToCart, getQuantityById } = useContext(CartContext);
 
-  const productSelected = products.find((element) => element.id === Number(id));
+  const [productSelected, setProductSelected] = useState({})
 
-  const onAdd = (quantity) => {
-    let product = {
+  useEffect(()=>{
+
+    const itemCollection = collection(db, "products")
+    const ref = doc( itemCollection, id )
+    getDoc(ref)
+      .then( res => {
+        setProductSelected({
+          ...res.data(),
+          id: res.id
+        })
+      })
+
+  },[id])
+
+
+  const onAdd = (cantidad) => {
+    let producto = {
       ...productSelected,
-      quantity: quantity,
+      quantity: cantidad,
     };
 
-    addToCart(product);
+    addToCart(producto);
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Producto agregado exitosamente',
+      showConfirmButton: false,
+      timer: 1500
+    })
   };
 
+  let quantity = getQuantityById(Number(id))
+  console.log(quantity)
+
   return (
-    <Card
-      sx={{ maxWidth: 345 }}
-      style={{
-        margin: "30px",
-        marginLeft: 500,
-        marginBottom: 100,
-        marginTop: 100,
-      }}
-    >
-      <CardMedia
-        sx={{ height: 140 }}
-        image={productSelected.img}
-        title="product"
-      />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+    <div className={"containerItemDetail"}>
+      <div className={"containerImage"}>
+        <img src={productSelected.img} alt="" />
+      </div>
+
+      <div className={"containerDetail"}>
+        <h2 style={{ fontFamily: "monospace" }}>
+          <span style={{ fontSize: "23px" }}>Nombre:</span>{" "}
           {productSelected.title}
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <ItemCount stock={productSelected.stock} onAdd={onAdd} />
-      </CardActions>
-    </Card>
+        </h2>
+        <h2 style={{ fontFamily: "monospace" }}>
+          <span style={{ fontSize: "23px" }}>Descripcion:</span>{" "}
+          {productSelected.description}
+        </h2>
+        <h2 style={{ fontFamily: "monospace" }}>
+          <span style={{ fontSize: "23px" }}>Precio:</span> $
+          {productSelected.price}.-
+        </h2>
+
+        <ItemCount onAdd={onAdd} stock={productSelected.stock} initial={quantity} />
+      </div>
+    </div>
   );
 };
 
