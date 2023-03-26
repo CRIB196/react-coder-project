@@ -72,7 +72,7 @@ const Cart = () => {
 
             {cart.length > 0 && (
               <div className="btn-cart">
-                <Button variant="contained" onClick={()=>setShowForm(true)}>Terminar la compra</Button>
+                <Button variant="contained" onClick={()=>setShowForm(true)}>Finish your purchase</Button>
                 <Button onClick={clear} variant="contained">
                  Empty cart
                 </Button>
