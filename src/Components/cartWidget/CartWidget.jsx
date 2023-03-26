@@ -1,5 +1,7 @@
-import React, { useContext } from "react";
 import { BsFillCartCheckFill } from "react-icons/bs";
+
+import { useContext } from "react";
+
 import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
 
@@ -10,9 +12,14 @@ const CartWidget = () => {
 
   return (
     <Link to="/cart">
-      <div style={{ margin: "50px" }}>
-        <BsFillCartCheckFill color="white" size={50} />
-        <div className="bubble-counter" style={{ color: "white" }}>
+      <div className="container-cart">
+        <BsFillCartCheckFill
+          style={{
+            fontSize: "2rem",
+            color: "#e1d4c7",
+          }}
+        />
+        <div className="bubble-counter">
           <span>{total}</span>
         </div>
       </div>
