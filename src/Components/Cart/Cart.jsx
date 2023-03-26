@@ -1,24 +1,25 @@
 import { Button } from "@mui/material";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { CartContext } from "../../context/CartContext";
 import Swal from "sweetalert2";
-import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
+import FormCheckout from "../FormCheckout/FormCheckout";
+import { Link } from "react-router-dom";
+
 
 const Cart = () => {
   const { cart, clearCart, getTotalPrice, deleteProductById } =
     useContext(CartContext);
 
+  const [showForm, setShowForm] = useState(false);
+  const [orderId, setOrderId] = useState(null)
+
   const clear = () => {
     Swal.fire({
-      title: "Are you sure you want to empty cart?",
+      title: "Are you sure you want to empty your cart?",
       showDenyButton: true,
       showCancelButton: true,
       confirmButtonText: "Yes, empty cart",
-      denyButtonText: `No, do not empty cart`,
+      denyButtonText: "No, do not empty cart",
     }).then((result) => {
       if (result.isConfirmed) {
         clearCart();
@@ -29,71 +30,61 @@ const Cart = () => {
     });
   };
 
- return (
-   <div>
-      <Typography gutterBottom variant="h5" component="div">
-        Shopping cart
-      </Typography>
-      {cart.map((element) => {
-        return (
-          <div>
-            <Card sx={{ display: "flex" }}>
-              <Box sx={{ display: "flex", flexDirection: "column" }}>
-                <CardContent sx={{ flex: "1 0 auto" }}>
-                  <Typography component="div" variant="h5">
-                    {element.title}
-                  </Typography>
-                  <Typography
-                    variant="subtitle1"
-                    color="text.secondary"
-                    component="div"
-                  >
-                    Total amount ${element.price}.00 UDS
-                  </Typography>
-                  <Typography
-                    variant="subtitle1"
-                    color="text.secondary"
-                    component="div"
-                  >
-                    Total units {element.quantity}
-                  </Typography>
-                </CardContent>
-              </Box>
-              <CardMedia
-                component="img"
-                sx={{ width: 151 }}
-                image={element.img}
-                alt="Live from space album cover"
-              />
-            </Card>
-            <Button
-                  color="secondary"
-                  variant="contained"
-                  onClick={() => deleteProductById(element.id)}
-                >
-                  Delete
-                </Button>
-              
-               <div className="cart-info">
-        <h3>Total price: {getTotalPrice()}</h3>
-        <h3>Discount: - </h3>
-        <h3>Final Price: -</h3>
-
-        {cart.length > 0 && (
-          <div className="btn-cart">
-            <Button variant="contained">Comprar</Button>
-            <Button onClick={clear} variant="contained">
-              Empty Cart
-            </Button>
-          </div>
-        )}
-
-        <h1>Total of Cart ${getTotalPrice()}</h1>
+  if(orderId){
+    return (
+      <div>
+        <h2>Thank you for your order</h2>
+        <h4>The ticket is : {orderId}</h4>
+        <Link to="/">Keep shopping</Link>
       </div>
+    )
+  }
+
+  return (
+    <div>
+      {!showForm ? (
+        <div className="cart-container">
+          <div className="container-items">
+            {cart.map((item) => {
+              return (
+                <div key={item.id} className="cart-item">
+                  <img src={item.img} alt="" />
+                  <div className="cart-item-info">
+                    <h2>{item.name}</h2>
+                    <h2>${item.price}.-</h2>
+                    <h2>Units: {item.quantity}</h2>
+                    <Button
+                      color="secondary"
+                      variant="contained"
+                      onClick={() => deleteProductById(item.id)}
+                    >
+                      Delete
+                    </Button>
+                  </div>
+                </div>
+              );
+            })}
           </div>
-          
-        );
-      })}
+          <div className="cart-info">
+            <h3>Total: {getTotalPrice()}</h3>
+            <h3>Discount: - </h3>
+            <h3>Final Price: -</h3>
+
+            {cart.length > 0 && (
+              <div className="btn-cart">
+                <Button variant="contained" onClick={()=>setShowForm(true)}>Terminar la compra</Button>
+                <Button onClick={clear} variant="contained">
+                 Empty cart
+                </Button>
+              </div>
+            )}
+
+            <h1>Total of the cart is ${getTotalPrice()}</h1>
+          </div>
+        </div>
+      ) : (
+        <FormCheckout cart={cart} getTotalPrice={getTotalPrice} setOrderId={setOrderId} clearCart={clearCart} />
+      )}
     </div>
   );
 };
