@@ -9,15 +9,15 @@ const ItemDetail = ({ productSelected, onAdd, quantity }) => {
 
       <div className={"containerDetail"}>
         <h2 style={{ fontFamily: "monospace" }}>
-          <span style={{ fontSize: "23px" }}>Nombre:</span>{" "}
+          <span style={{ fontSize: "23px" }}>Name:</span>{" "}
           {productSelected.title}
         </h2>
         <h2 style={{ fontFamily: "monospace" }}>
-          <span style={{ fontSize: "23px" }}>Descripcion:</span>{" "}
+          <span style={{ fontSize: "23px" }}>Description:</span>{" "}
           {productSelected.description}
         </h2>
         <h2 style={{ fontFamily: "monospace" }}>
-          <span style={{ fontSize: "23px" }}>Precio:</span> $
+          <span style={{ fontSize: "23px" }}>Price:</span> $
           {productSelected.price}.-
         </h2>
 
