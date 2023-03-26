@@ -4,76 +4,52 @@ import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import { CartContext } from "../../context/CartContext";
 
-import ItemCount from "../ItemCount/ItemCount";
-
-
-import { getDoc, collection, doc } from "firebase/firestore"
+import { getDoc, collection, doc } from "firebase/firestore";
 import { db } from "../../firebaseConfig";
+import ItemDetail from "../ItemDetail/ItemDetail";
 
 const ItemDetailContainer = () => {
   const { id } = useParams();
 
-  const { agregarAlCarrito: addToCart, getQuantityById } = useContext(CartContext);
+  const {addToCart, getQuantityById } = useContext(CartContext);
 
-  const [productSelected, setProductSelected] = useState({})
+  const [productSelected, setProductSelected] = useState({});
 
-  useEffect(()=>{
+  useEffect(() => {
+    const itemCollection = collection(db, "products");
+    const ref = doc(itemCollection, id);
+    getDoc(ref).then((res) => {
+      setProductSelected({
+        ...res.data(),
+        id: res.id,
+      });
+    });
+  }, [id]);
 
-    const itemCollection = collection(db, "products")
-    const ref = doc( itemCollection, id )
-    getDoc(ref)
-      .then( res => {
-        setProductSelected({
-          ...res.data(),
-          id: res.id
-        })
-      })
-
-  },[id])
-
-
-  const onAdd = (cantidad) => {
+  const onAdd = (quantity) => {
     let producto = {
       ...productSelected,
-      quantity: cantidad,
+      quantity: quantity,
     };
 
     addToCart(producto);
     Swal.fire({
-      position: 'center',
-      icon: 'success',
-      title: 'Producto agregado exitosamente',
+      position: "center",
+      icon: "success",
+      title: "Added successfully to cart",
       showConfirmButton: false,
-      timer: 1500
-    })
+      timer: 1500,
+    });
   };
 
-  let quantity = getQuantityById(Number(id))
-  console.log(quantity)
+  let quantity = getQuantityById(Number(id));
 
   return (
-    <div className={"containerItemDetail"}>
-      <div className={"containerImage"}>
-        <img src={productSelected.img} alt="" />
-      </div>
-
-      <div className={"containerDetail"}>
-        <h2 style={{ fontFamily: "monospace" }}>
-          <span style={{ fontSize: "23px" }}>Nombre:</span>{" "}
-          {productSelected.title}
-        </h2>
-        <h2 style={{ fontFamily: "monospace" }}>
-          <span style={{ fontSize: "23px" }}>Descripcion:</span>{" "}
-          {productSelected.description}
-        </h2>
-        <h2 style={{ fontFamily: "monospace" }}>
-          <span style={{ fontSize: "23px" }}>Precio:</span> $
-          {productSelected.price}.-
-        </h2>
-
-        <ItemCount onAdd={onAdd} stock={productSelected.stock} initial={quantity} />
-      </div>
-    </div>
+    <ItemDetail
+      productSelected={productSelected}
+      onAdd={onAdd}
+      quantity={quantity}
+    />
   );
 };
 
