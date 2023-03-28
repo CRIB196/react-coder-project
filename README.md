@@ -1,11 +1,12 @@
-# SwissMedia Ecommerce WebPage
+# SwissMedia Ecommerce WebPage 
 
 ### Description:
 
-- Website for clothing and shoes company
+- Website for clothing and shoes company 
 - Main page with general information
 - Shopping features availables
 - _This project is part of a course assigment_ 🙂
+
 
 
 
@@ -21,9 +22,14 @@ https://github.com/CRIB196/React-FinalProjectCamilaRiboldi.git
 
 ## Further Information
 
+### Project Organization:
+- Be aware that as we are using React, this project is organized by components, where each component has its own folder and in there you will find the component itself (jsx) and also when is needed a css file for styling. 
+
+<img src="https://res.cloudinary.com/dav7tzdzv/image/upload/v1680033827/Captura_de_pantalla_2023-03-28_170328_yevcgb.png" width="120" height="200">
+
 ### Support:
 
-- Please contact trialmail@gmail.com if there is any problem either during installation or in terms of UX.
+- Please contact trialmail@gmail.com if there is any problem either during installation or in related to UX.
 
 ### Contributing:
 
@@ -41,7 +47,7 @@ https://github.com/CRIB196/React-FinalProjectCamilaRiboldi.git
 
 &nbsp;
 
-| Libraries & Technologies being used |
+| Libraries & Technologies being used | 
 | ----------------------------------- |
 | React                               |
 | Firebase                            |
@@ -50,4 +56,3 @@ https://github.com/CRIB196/React-FinalProjectCamilaRiboldi.git
 | Sweetalert2                         |
 
 
-![alt text](https://res.cloudinary.com/dav7tzdzv/image/upload/v1680032558/swissclothinglogo_upd7mh.png)
