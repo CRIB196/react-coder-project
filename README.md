@@ -7,7 +7,7 @@
 - Shopping features availables
 - _This project is part of a course assigment_
 
-&nbsp; &nbsp; &nbsp;
+&nbsp; 
 
 ### To clone repo:
 
@@ -18,9 +18,6 @@ https://github.com/CRIB196/React-FinalProjectCamilaRiboldi.git
 &nbsp; &nbsp; &nbsp;
 
 ## Further Information
-
-&nbsp;
-
 ### Support:
 
 - Please contact trialmail@gmail.com if there is any problem either during installation or in terms of UX.
