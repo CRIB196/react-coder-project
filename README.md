@@ -25,7 +25,7 @@ https://github.com/CRIB196/React-FinalProjectCamilaRiboldi.git
 ### Project Organization:
 - Be aware that as we are using React, this project is organized by components, where each component has its own folder and in there you will find the component itself (jsx) and also when is needed a css file for styling. 
 
-<img src="https://res.cloudinary.com/dav7tzdzv/image/upload/v1680033827/Captura_de_pantalla_2023-03-28_170328_yevcgb.png" width="120" height="200">
+<img src="https://res.cloudinary.com/dav7tzdzv/image/upload/v1680033827/Captura_de_pantalla_2023-03-28_170328_yevcgb.png" width="150" height="230">
 
 ### Support:
 
