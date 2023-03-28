@@ -1,41 +1,59 @@
-import styles from "../Navbar/Navbar.module.css";
+import styles from "./Navbar.module.css";
+
 import CartWidget from "../CartWidget/CartWidget";
-import { useEffect, useState } from "react";
+
 import { Link } from "react-router-dom";
-import MainLogo from "../Logo/MainLogo";
+import { useEffect, useState } from "react";
+
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebaseConfig";
 
 const Navbar = ({ children }) => {
   const [categoryList, setCategoryList] = useState([]);
+  const [cate, setCate] = useState([]);
 
   useEffect(() => {
     const itemsCollection = collection(db, "categories");
     getDocs(itemsCollection).then((res) => {
       let arrayCategories = res.docs.map((category) => {
+        console.log(category);
         return {
           ...category.data(),
           id: category.id,
         };
       });
       setCategoryList(arrayCategories);
+      const firstCat =
+        categoryList.length > 0 && categoryList.find((e) => e.title === "All");
+      const otherCat =
+        categoryList.length > 0 &&
+        categoryList.filter((e) => e.title !== "All");
+      if (categoryList.length > 0) {
+        setCate([firstCat, ...otherCat]);
+      }
     });
-  }, []);
+  }, [categoryList]);
 
   return (
-    <div className={styles.container}>
+    <div>
       <div className={styles.containerNavbar}>
-        <MainLogo/>
+        <Link to="/" style={{ color: "#e1d4c7", textDecoration: "none" }}>
+          Comision: 51600
+        </Link>
+
         <ul className={styles.containerList}>
-          <Link to="/" className={styles.navbarItem}>
-            All
+          {cate?.map((category) => {
+            console.log(category);
+            return (
+              <Link
+                key={category.id}
+                to={category.path}
+                className={styles.navbarItem}
+              >
+                {category.title}
               </Link>
-          <Link to="/category/sneakers" className={styles.navbarItem}>
-            Sneakers 
-          </Link>
-          <Link to="/category/hoddies" className={styles.navbarItem}>
-            Hoddies
-          </Link>
+            );
+          })}
         </ul>
         <CartWidget />
       </div>
