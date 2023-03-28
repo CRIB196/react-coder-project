@@ -16,13 +16,15 @@ const Navbar = ({ children }) => {
     const itemsCollection = collection(db, "categories");
     getDocs(itemsCollection).then((res) => {
       let arrayCategories = res.docs.map((category) => {
-        console.log(category);
+        console.log("FIRST TIME " + category);
         return {
           ...category.data(),
           id: category.id,
         };
       });
       setCategoryList(arrayCategories);
+      console.log(arrayCategories + "cathegories");
+
       const firstCat =
         categoryList.length > 0 && categoryList.find((e) => e.title === "All");
       const otherCat =
@@ -43,7 +45,7 @@ const Navbar = ({ children }) => {
 
         <ul className={styles.containerList}>
           {cate?.map((category) => {
-            console.log(category);
+            console.log(category + "this is unde?DJf");
             return (
               <Link
                 key={category.id}
