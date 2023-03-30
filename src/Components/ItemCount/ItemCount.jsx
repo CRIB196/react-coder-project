@@ -1,5 +1,7 @@
 import { Button } from "@mui/material";
+import CardActions from "@mui/material/CardActions";
 import { useState } from "react";
+import Typography from "@mui/material/Typography";
 
 const ItemCount = ({ stock, initial = 1, onAdd }) => {
   const [counter, setCounter] = useState(initial);
@@ -18,17 +20,21 @@ const ItemCount = ({ stock, initial = 1, onAdd }) => {
 
   return (
     <div className="container-btn">
-      <h2>Cantidad: {counter}</h2>
+      <Typography gutterBottom variant="h5" component="div">
+        Quantity: {counter}
+      </Typography>
       <div className="btns">
-        <Button variant="outlined" onClick={add}>
-          +
-        </Button>
-        <Button variant="contained" onClick={() => onAdd(counter)}>
-          Add to cart
-        </Button>
-        <Button variant="outlined" onClick={decrease}>
-          -
-        </Button>
+        <CardActions>
+          <Button variant="outlined" onClick={add}>
+            +
+          </Button>
+          <Button variant="contained" onClick={() => onAdd(counter)}>
+            Add to cart
+          </Button>
+          <Button variant="outlined" onClick={decrease}>
+            -
+          </Button>
+        </CardActions>
       </div>
     </div>
   );

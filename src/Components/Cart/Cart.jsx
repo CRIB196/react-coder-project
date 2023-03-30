@@ -1,17 +1,22 @@
-import { Button } from "@mui/material";
-import React, { useContext, useState } from "react";
+import * as React from "react";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import { useContext, useState } from "react";
 import { CartContext } from "../../context/CartContext";
 import Swal from "sweetalert2";
 import FormCheckout from "../FormCheckout/FormCheckout";
 import { Link } from "react-router-dom";
-
 
 const Cart = () => {
   const { cart, clearCart, getTotalPrice, deleteProductById } =
     useContext(CartContext);
 
   const [showForm, setShowForm] = useState(false);
-  const [orderId, setOrderId] = useState(null)
+  const [orderId, setOrderId] = useState(null);
 
   const clear = () => {
     Swal.fire({
@@ -30,60 +35,93 @@ const Cart = () => {
     });
   };
 
-  if(orderId){
+  if (orderId) {
     return (
       <div>
         <h2>Thank you for your order</h2>
         <h4>The ticket is : {orderId}</h4>
         <Link to="/">Keep shopping</Link>
       </div>
-    )
+    );
   }
 
   return (
     <div>
       {!showForm ? (
         <div className="cart-container">
-          <div className="container-items">
-            {cart.map((item) => {
-              return (
-                <div key={item.id} className="cart-item">
-                  <img src={item.img} alt="" />
-                  <div className="cart-item-info">
-                    <h2>{item.name}</h2>
-                    <h2>${item.price}.-</h2>
-                    <h2>Units: {item.quantity}</h2>
-                    <Button
-                      color="secondary"
-                      variant="contained"
-                      onClick={() => deleteProductById(item.id)}
-                    >
-                      Delete
-                    </Button>
+          <Card sx={{ maxWidth: 345 }}>
+            <div className="container-items">
+              {cart.map((item) => {
+                return (
+                  <div key={item.id} className="cart-item">
+                    <CardMedia
+                      component="img"
+                      alt=""
+                      height="140"
+                      image={item.img}
+                    />
+                    <div className="cart-item-info">
+                      <CardContent>
+                        <Typography gutterBottom variant="h5" component="div">
+                          {item.title}
+                        </Typography>
+                        <Typography gutterBottom variant="h6" component="div">
+                          ${item.price}.-
+                        </Typography>
+                        <Typography gutterBottom variant="h6" component="div">
+                          Units: {item.quantity}
+                        </Typography>
+                      </CardContent>
+                      <CardActions>
+                        <Button
+                          size="small"
+                          onClick={() => deleteProductById(item.id)}
+                        >
+                          Delete
+                        </Button>
+                      </CardActions>
+                    </div>
                   </div>
-                </div>
-              );
-            })}
-          </div>
-          <div className="cart-info">
-            <h3>Total: {getTotalPrice()}</h3>
-            <h3>Discount: - </h3>
-            <h3>Final Price: -</h3>
+                );
+              })}
+            </div>
+          </Card>
+          <div style={{ margin: "25%" }}>
+            <Card sx={{ maxWidth: 600 }} variant="outlined">
+              <CardContent>
+                <Typography variant="body1">
+                  Total: {getTotalPrice()}
+                </Typography>
+                <Typography variant="body1">Discount: -</Typography>
+                <Typography variant="body1">Final Price: -</Typography>
 
-            {cart.length > 0 && (
-              <div className="btn-cart">
-                <Button variant="contained" onClick={()=>setShowForm(true)}>Finish your purchase</Button>
-                <Button onClick={clear} variant="contained">
-                 Empty cart
-                </Button>
-              </div>
-            )}
-
-            <h1>Total of the cart is ${getTotalPrice()}</h1>
+                {cart.length > 0 && (
+                    <CardActions>
+                      <Button
+                        variant="contained"
+                        onClick={() => setShowForm(true)}
+                      >
+                        Finish your purchase
+                      </Button>
+                      <Button onClick={clear} variant="contained">
+                        Empty cart
+                      </Button>
+                    </CardActions>         
+                )}
+                <Typography variant="h4" component="div">
+                  Total of the cart is ${getTotalPrice()}
+                </Typography>
+              </CardContent>
+            </Card>
           </div>
         </div>
       ) : (
-        <FormCheckout cart={cart} getTotalPrice={getTotalPrice} setOrderId={setOrderId} clearCart={clearCart} />
+        <FormCheckout
+          cart={cart}
+          getTotalPrice={getTotalPrice}
+          setOrderId={setOrderId}
+          clearCart={clearCart}
+        />
       )}
     </div>
   );

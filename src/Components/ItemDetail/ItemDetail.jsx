@@ -1,32 +1,39 @@
-import React from "react";
+import * as React from "react";
 import ItemCount from "../ItemCount/ItemCount";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import {CardActionArea} from "@mui/material";
+
 const ItemDetail = ({ productSelected, onAdd, quantity }) => {
   return (
-    <div className={"containerItemDetail"}>
-      <div className={"containerImage"}>
-        <img src={productSelected.img} alt="" />
-      </div>
-
-      <div className={"containerDetail"}>
-        <h2 style={{ fontFamily: "monospace" }}>
-          <span style={{ fontSize: "23px" }}>Name:</span>{" "}
-          {productSelected.title}
-        </h2>
-        <h2 style={{ fontFamily: "monospace" }}>
-          <span style={{ fontSize: "23px" }}>Description:</span>{" "}
-          {productSelected.description}
-        </h2>
-        <h2 style={{ fontFamily: "monospace" }}>
-          <span style={{ fontSize: "23px" }}>Price:</span> $
-          {productSelected.price}.-
-        </h2>
+    <div>
+      <Card sx={{ maxWidth: 345 }}>
+        <CardActionArea>
+          <CardMedia
+            component="img"
+            height="140"
+            image={productSelected.img}
+            alt=""
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="div">
+              {productSelected.title}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              <b>Description:</b> {productSelected.description} <br />
+              <b>Price:</b> {productSelected.price}.-
+            </Typography>
+          </CardContent>
+        </CardActionArea>
 
         <ItemCount
           onAdd={onAdd}
           stock={productSelected.stock}
           initial={quantity}
         />
-      </div>
+      </Card>
     </div>
   );
 };
