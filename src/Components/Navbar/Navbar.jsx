@@ -1,37 +1,32 @@
 import styles from "./Navbar.module.css";
-
 import CartWidget from "../CartWidget/CartWidget";
-
+import MainLogo from "../Logo/MainLogo";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebaseConfig";
 
 const Navbar = ({ children }) => {
   const [categoryList, setCategoryList] = useState([]);
-  const [cate, setCate] = useState([]);
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     const itemsCollection = collection(db, "categories");
     getDocs(itemsCollection).then((res) => {
       let arrayCategories = res.docs.map((category) => {
-        console.log("FIRST TIME " + category);
         return {
           ...category.data(),
           id: category.id,
         };
       });
       setCategoryList(arrayCategories);
-      console.log(arrayCategories + "cathegories");
-
       const firstCat =
         categoryList.length > 0 && categoryList.find((e) => e.title === "All");
       const otherCat =
         categoryList.length > 0 &&
         categoryList.filter((e) => e.title !== "All");
       if (categoryList.length > 0) {
-        setCate([firstCat, ...otherCat]);
+        setCategories([firstCat, ...otherCat]);
       }
     });
   }, [categoryList]);
@@ -39,13 +34,9 @@ const Navbar = ({ children }) => {
   return (
     <div>
       <div className={styles.containerNavbar}>
-        <Link to="/" style={{ color: "#e1d4c7", textDecoration: "none" }}>
-          Comision: 51600
-        </Link>
-
+        <MainLogo/>
         <ul className={styles.containerList}>
-          {cate?.map((category) => {
-            console.log(category + "this is unde?DJf");
+          {categories?.map((category) => {
             return (
               <Link
                 key={category.id}
