@@ -4,12 +4,20 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import {CardActionArea} from "@mui/material";
+import { CardActionArea } from "@mui/material";
 
 const ItemDetail = ({ productSelected, onAdd, quantity }) => {
   return (
     <div>
-      <Card sx={{ maxWidth: 345 }}>
+      <Card
+        sx={{ maxWidth: 345 }}
+        style={{
+          marginLeft: "35%",
+          marginTop: "2%",
+          marginBottom: "5%",
+          padding: 10,
+        }}
+      >
         <CardActionArea>
           <CardMedia
             component="img"

@@ -19,9 +19,13 @@ const ItemCount = ({ stock, initial = 1, onAdd }) => {
   };
 
   return (
-    <div className="container-btn">
-      <Typography gutterBottom variant="h5" component="div">
-        Quantity: {counter}
+    <div className="container-btn" style={{ padding: 20 }}>
+      <Typography
+        variant="body2"
+        color="text.secondary"
+        style={{ margin: "2%" }}
+      >
+        <b>Quantity:</b> {counter}
       </Typography>
       <div className="btns">
         <CardActions>
