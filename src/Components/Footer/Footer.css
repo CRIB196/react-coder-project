@@ -1,3 +1,6 @@
+.body-classname {
+  min-height: 550px;
+}
 .footer-container {
   background-color: #090d11;
   color: white;
@@ -6,6 +9,8 @@
   padding: 20px;
   align-items: center;
   height: 100px;
+  bottom: 0;
+  width: 100%;
 }
 
 .footer-container h1 {

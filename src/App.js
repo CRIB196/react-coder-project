@@ -13,20 +13,22 @@ function App() {
   return (
     <BrowserRouter>
       <CartContextProvider>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<ItemListContainer />} />
-          <Route
-            path="/category/:categoryName"
-            element={<ItemListContainer />}
-          />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/itemDetail/:id" element={<ItemDetailContainer />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/form" element={<Form />} />
+        <div className="body-classname" >
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<ItemListContainer />} />
+            <Route
+              path="/category/:categoryName"
+              element={<ItemListContainer />}
+            />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/itemDetail/:id" element={<ItemDetailContainer />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/form" element={<Form />} />
 
-          <Route path="*" element={<h1> error 404: Not found </h1>} />
-        </Routes>
+            <Route path="*" element={<h1> error 404: Not found </h1>} />
+          </Routes>
+        </div>
         <Footer />
       </CartContextProvider>
     </BrowserRouter>
