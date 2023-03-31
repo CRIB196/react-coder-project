@@ -12,14 +12,18 @@ const CartWidget = () => {
 
   return (
     <Link to="/cart">
-      <div className="container-cart">
-        <BsFillCartCheckFill
-          style={{
-            fontSize: "2rem",
-            color: "#e1d4c7",
-          }}
-        />
-        <div className="bubble-counter">
+      <div
+        className="container-cart"
+        style={{
+          fontSize: "2rem",
+          color: "#e1d4c7",
+          marginRight: "55px",
+          marginLeft: "100px",
+        }}
+      >
+        <BsFillCartCheckFill />
+        <div className="bubble-counter"  style={{
+          fontSize: "12px"}}>
           <span>{total}</span>
         </div>
       </div>

@@ -34,7 +34,7 @@ const Navbar = ({ children }) => {
   return (
     <div>
       <div className={styles.containerNavbar}>
-        <MainLogo/>
+        <MainLogo />
         <ul className={styles.containerList}>
           {categories?.map((category) => {
             return (
@@ -42,6 +42,11 @@ const Navbar = ({ children }) => {
                 key={category.id}
                 to={category.path}
                 className={styles.navbarItem}
+                style={{
+                  color: "#e1d4c7",
+                  marginRight: "40px",
+                  marginLeft: "50px",
+                }}
               >
                 {category.title}
               </Link>

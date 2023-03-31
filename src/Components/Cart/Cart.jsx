@@ -69,14 +69,14 @@ const Cart = () => {
                     />
                     <div className="cart-item-info">
                       <CardContent>
-                        <Typography gutterBottom variant="h5" component="div">
+                        <Typography gutterBottom variant="h7" component="div">
                           {item.title}
                         </Typography>
-                        <Typography gutterBottom variant="h6" component="div">
-                          ${item.price}.-
+                        <Typography gutterBottom variant="h8" component="div">
+                          Item Price: ${item.price}.
                         </Typography>
-                        <Typography gutterBottom variant="h6" component="div">
-                          Units: {item.quantity}
+                        <Typography gutterBottom variant="h8" component="div">
+                          Units of this item: {item.quantity}
                         </Typography>
                       </CardContent>
                       <CardActions>
@@ -95,12 +95,25 @@ const Cart = () => {
           </Card>
           <div style={{ margin: "5%" }}>
             <Card sx={{ maxWidth: 600 }} variant="outlined">
-              <CardContent>
-                <Typography variant="body1">
-                  Total: {getTotalPrice()}
-                </Typography>
-                <Typography variant="body1">Discount: -</Typography>
-                <Typography variant="body1">Final Price: -</Typography>
+              <CardContent
+                style={{
+                  padding: "35px",
+                }}
+              >
+                <div
+                  style={{
+                    marginLeft: "5px",
+                    padding: "10px",
+                  }}
+                >
+                  <Typography variant="body2">
+                    Total before discounts: ${getTotalPrice()}
+                  </Typography>
+                  <Typography variant="body2">Discount: -</Typography>
+                  <Typography variant="body2">
+                    Total of the cart is <b>${getTotalPrice()}</b>
+                  </Typography>
+                </div>
 
                 {cart.length > 0 && (
                   <CardActions>
@@ -115,9 +128,6 @@ const Cart = () => {
                     </Button>
                   </CardActions>
                 )}
-                <Typography variant="h4" component="div">
-                  Total of the cart is ${getTotalPrice()}
-                </Typography>
               </CardContent>
             </Card>
           </div>

@@ -13,8 +13,6 @@ const Item = ({ element }) => {
       sx={{
         width: 345,
         height: 350,
-        color: "white",
-        border: "1px solid black",
         borderRadius: "10px",
         boxShadow: "0px 0px 10px black",
       }}

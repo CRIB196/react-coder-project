@@ -6,7 +6,7 @@ const MainLogo = () => {
       <Link to="/">
         <img
           src={myLogo}
-          style={{ width: "200px", margin: "40px" }}
+          style={{ width: "200px", marginLeft: "50px" }}
           alt="Logo"
         ></img>
       </Link>
