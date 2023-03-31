@@ -49,7 +49,14 @@ const Cart = () => {
     <div>
       {!showForm ? (
         <div className="cart-container">
-          <Card sx={{ maxWidth: 345 }}>
+          <Card
+            sx={{ maxWidth: 345 }}
+            style={{
+              marginLeft: "5%",
+              marginTop: "2%",
+              marginBottom: "2px",
+            }}
+          >
             <div className="container-items">
               {cart.map((item) => {
                 return (
@@ -86,7 +93,7 @@ const Cart = () => {
               })}
             </div>
           </Card>
-          <div style={{ margin: "25%" }}>
+          <div style={{ margin: "5%" }}>
             <Card sx={{ maxWidth: 600 }} variant="outlined">
               <CardContent>
                 <Typography variant="body1">
@@ -96,17 +103,17 @@ const Cart = () => {
                 <Typography variant="body1">Final Price: -</Typography>
 
                 {cart.length > 0 && (
-                    <CardActions>
-                      <Button
-                        variant="contained"
-                        onClick={() => setShowForm(true)}
-                      >
-                        Finish your purchase
-                      </Button>
-                      <Button onClick={clear} variant="contained">
-                        Empty cart
-                      </Button>
-                    </CardActions>         
+                  <CardActions>
+                    <Button
+                      variant="contained"
+                      onClick={() => setShowForm(true)}
+                    >
+                      Finish your purchase
+                    </Button>
+                    <Button onClick={clear} variant="contained">
+                      Empty cart
+                    </Button>
+                  </CardActions>
                 )}
                 <Typography variant="h4" component="div">
                   Total of the cart is ${getTotalPrice()}

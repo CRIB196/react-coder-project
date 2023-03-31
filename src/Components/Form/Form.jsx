@@ -40,9 +40,6 @@ const Form = () => {
       );
       return;
     }
-
-    //on submit to do
-    console.log(userData);
   };
 
   return (
