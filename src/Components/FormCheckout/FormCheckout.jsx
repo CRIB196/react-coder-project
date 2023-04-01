@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, TextField, Button, Typography } from "@mui/material";
+import { Box, TextField, Button, Typography, Card } from "@mui/material";
 
 import { addDoc, collection, updateDoc, doc } from "firebase/firestore";
 import { db } from "../../firebaseConfig";
@@ -7,9 +7,13 @@ import { db } from "../../firebaseConfig";
 const FormCheckout = ({ cart, getTotalPrice, setOrderId, clearCart }) => {
   const [userData, setUserData] = useState({
     name: "",
+    lastname: "",
+    firstemail: "",
     email: "",
     phone: "",
   });
+
+  console.log(userData);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,6 +21,8 @@ const FormCheckout = ({ cart, getTotalPrice, setOrderId, clearCart }) => {
     let order = {
       buyer: userData,
       items: cart,
+      date: Date().toLocaleString(),
+      state: "Successful purchase",
       total,
     };
     let orderCollection = collection(db, "orders");
@@ -35,52 +41,62 @@ const FormCheckout = ({ cart, getTotalPrice, setOrderId, clearCart }) => {
 
   return (
     <div>
-      <Box
-        component="form"
-        sx={{
-          "& .MuiTextField-root": { m: 1, width: "25ch" },
-        }}
-        noValidate
-        autoComplete="off"
+      <Card
+        sx={{ maxWidth: 500 }}
         style={{
-          marginLeft: "20%",
-          marginTop: "5%",
-          marginBottom: "20%",
-          padding: 10,
+          marginLeft: "35%",
+          marginTop: "8%",
+          padding: 40,
+          backgroundColor: "#e1d4c7",
         }}
       >
+        <Typography gutterBottom variant="h5" component="div">
+          Fill the form data to finish purchase:
+        </Typography>
+
         <form onSubmit={handleSubmit}>
-          <Typography gutterBottom variant="h7" component="div" style={{marginLeft:"1%"}}>
-            Complete with your personal information to finish the purchase:
-          </Typography>
-          <TextField
-            type="text"
-            placeholder="Email"
-            value={userData.email}
-            onChange={(e) =>
-              setUserData({ ...userData, email: e.target.value })
-            }
-          />
-          <TextField
+          <input
             type="text"
             placeholder="Name"
             value={userData.name}
             onChange={(e) => setUserData({ ...userData, name: e.target.value })}
           />
-
-          <TextField
+          <input
             type="text"
-            placeholder="Telephone"
+            placeholder="Last Name"
+            value={userData.lastname}
+            onChange={(e) =>
+              setUserData({ ...userData, lastname: e.target.value })
+            }
+          />
+          <input
+            type="text"
+            placeholder="Email"
+            value={userData.firstemail}
+            onChange={(e) =>
+              setUserData({ ...userData, firstemail: e.target.value })
+            }
+          />
+          <input
+            type="text"
+            placeholder="Repeat your email"
+            value={userData.email}
+            onChange={(e) =>
+              setUserData({ ...userData, email: e.target.value })
+            }
+          />
+          <input
+            type="text"
+            placeholder="Cellphone"
             value={userData.phone}
             onChange={(e) =>
               setUserData({ ...userData, phone: e.target.value })
             }
           />
-          <Button variant="contained" type="submit" style={{marginTop:"15px"}}>
-            Purchase
-          </Button>
+
+          <button type="submit">Confirm Purchase</button>
         </form>
-      </Box>
+      </Card>
     </div>
   );
 };
