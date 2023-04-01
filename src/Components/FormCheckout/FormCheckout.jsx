@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, TextField, Button, Typography, Card } from "@mui/material";
+import {Button, Typography, Card } from "@mui/material";
 
 import { addDoc, collection, updateDoc, doc } from "firebase/firestore";
 import { db } from "../../firebaseConfig";
@@ -12,8 +12,6 @@ const FormCheckout = ({ cart, getTotalPrice, setOrderId, clearCart }) => {
     email: "",
     phone: "",
   });
-
-  console.log(userData);
 
   const handleSubmit = (e) => {
     e.preventDefault();
