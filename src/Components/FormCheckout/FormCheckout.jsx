@@ -43,14 +43,14 @@ const FormCheckout = ({ cart, getTotalPrice, setOrderId, clearCart }) => {
     <div>
       <Card
         sx={{ maxWidth: 500 }}
+        variant="outlined"
         style={{
           marginLeft: "35%",
-          marginTop: "8%",
+          marginTop: "5%",
           padding: 40,
-          backgroundColor: "#e1d4c7",
         }}
       >
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography gutterBottom variant="h6" component="div">
           Fill the form data to finish purchase:
         </Typography>
 
@@ -94,7 +94,12 @@ const FormCheckout = ({ cart, getTotalPrice, setOrderId, clearCart }) => {
             }
           />
 
-          <button type="submit">Confirm Purchase</button>
+          <br/>
+
+          <Button variant="contained" type="submit" style={{
+          marginTop:"15px" }}>
+            Confirm Purchase
+          </Button>
         </form>
       </Card>
     </div>

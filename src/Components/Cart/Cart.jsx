@@ -106,6 +106,9 @@ const Cart = () => {
                     padding: "10px",
                   }}
                 >
+                  <Typography gutterBottom variant="h6" component="div">
+                    Your cart summary:
+                  </Typography>
                   <Typography variant="body2">
                     Total before discounts: ${getTotalPrice()}
                   </Typography>
