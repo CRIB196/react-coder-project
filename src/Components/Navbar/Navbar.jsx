@@ -1,8 +1,8 @@
+import { useEffect, useState } from "react";
 import styles from "./Navbar.module.css";
 import CartWidget from "../CartWidget/CartWidget";
 import MainLogo from "../Logo/MainLogo";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebaseConfig";
 
